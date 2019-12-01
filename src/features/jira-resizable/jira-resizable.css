@@ -1,0 +1,16 @@
+.simk-resizer {
+	height: inherit;
+	width: 10px;
+	margin: unset;
+	padding: unset;
+	display: table-cell;
+	background-color: #4796e6;
+	cursor: e-resize;
+	position: fixed;
+	z-index: 2;
+}
+div#ghx-detail-contents {
+	/* position: unset !important; */
+	/* display: table-cell; */
+	padding-left: 10px !important;
+}

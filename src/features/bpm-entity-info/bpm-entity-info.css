@@ -1,0 +1,80 @@
+table.ns-ei-column-table {
+    overflow-y: auto;
+	width: 100%;
+	max-height: 500px;
+}
+
+table.ns-ei-column-table thead {
+  background-color: #0000ff30;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+table.ns-ei-column-table thead th, table.ns-ei-column-table tbody td {
+    border-right: solid 1px
+}
+
+table.ns-ei-column-table thead th:last-child, table.ns-ei-column-table tbody td:last-child {
+    border-right: none;
+}
+
+table.ns-ei-column-table th, table.ns-ei-column-table td {
+    padding: 2px 5px;
+    font-size: 15px;
+}
+
+.ns-entity-info-cnt {
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+	box-sizing: border-box;
+	position: fixed;
+	background-color: #fff;
+	z-index: 3001;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 500px;
+	min-height: 150px;
+	max-height: 700px;
+	opacity: 1;
+	height: fit-content;
+	border-top: 3px solid #64b8df;
+	OVERFLOW: auto;
+	width: 1000px;
+}
+
+tr.ns-ei-column-info-row:hover {
+    font-weight: bold;
+    background-color: #00ff0055;
+}
+
+.ns-ei-header {
+    padding: 5px 10px;
+    font-size: 15px;
+    border-bottom: solid 2px;
+}
+
+span.ns-ei-filter-caption {
+    padding-right: 10px;
+}
+
+.ns-ei-header > span {
+    margin-right: 50px;
+}
+
+.ns-ei-table-cnt {
+    max-height: 500px;
+    overflow: auto;
+}
+
+.ns-ei-info-not-found {
+	width: 100%;
+	display: block;
+	text-align: center;
+	font-size: 50px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}

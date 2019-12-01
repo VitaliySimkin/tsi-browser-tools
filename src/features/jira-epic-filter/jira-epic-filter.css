@@ -1,0 +1,107 @@
+.tsi-jira-epics-filter-btn {
+	border: 1px solid transparent;
+	border-radius: 3px 3px 3px 3px;
+	display: inline-block;
+	line-height: 1;
+	margin: 0 5px 0 0;
+	padding: 7px 10px;
+	cursor: pointer;
+	color: #3b73af;
+	font-family: Arial,sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	outline: none;
+	background-color: #fefefe;
+}
+.tsi-jira-epics-filter-btn .aui-icon-small {
+	margin-left: 1px;
+	margin-right: 5px;
+	width: 12px;
+	height: 11px;
+	font-size: 10px;
+	vertical-align: initial;
+	line-height: 0.4;
+	display: none;
+}
+.tsi-jira-epics-filter-btn .aui-icon-small:before {
+	margin-left: 5px;
+	width: 14px;
+	height: 14px;
+	font-size: 16px;
+}
+
+.tsi-jira-epics-filterActive {
+	background: #205081;
+	border-color: transparent;
+	color: #fefefe;
+}
+
+.tsi-jira-epics-filterActive .aui-icon-small {
+	display: inline-block;
+}
+
+.tsi-jira-epics-filterdown {
+	position: relative;
+	display: inline-block;
+}
+
+.tsi-jira-epics-filterdown-content {
+	display: block;
+	position: absolute;
+	z-index: 1;
+	border: solid 1px #ccc;
+	border-radius: 5px;
+	border-top-left-radius: 0;
+	background-color: #fff;
+	max-height: 50vh;
+	overflow: auto;
+}
+
+.tsi-jira-epics-filterdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.tsi-jira-epics-filter-btn:hover {
+	border-color: #ccc;
+}
+.tsi-jira-epics-filterdown-content a:hover {background-color: #ddd;}
+
+.tsi-jira-epics-filterdown:hover .tsi-jira-epics-filterdown-content {display: block;}
+
+.tsi-jira-epics-filterdown-content span {
+	display: block;
+	padding: 5px;
+	cursor: pointer;
+}
+.tsi-jira-epics-filterdown-content span:hover {
+	background-color: #ddf;
+}
+.tsi-jira-epics-filterActive:hover {
+	background: #2b78c7 !important;
+}
+
+input#tsi-jira-filter-input {
+	font-size: 14px;
+	border-radius: 3px;
+	border: solid 1px #aaa;
+	padding: 4px;
+}
+
+.tsi-jira-epics-filter-btn .aui-icon-small {
+	margin-left: 1px;
+	margin-right: 5px;
+	width: 12px;
+	height: 11px;
+	font-size: 10px;
+	vertical-align: initial;
+	line-height: 0.4;
+}
+.tsi-jira-epics-filter-btn .aui-icon-small:before {
+	margin-left: 5px;
+	width: 14px;
+	height: 14px;
+	font-size: 16px;
+}
