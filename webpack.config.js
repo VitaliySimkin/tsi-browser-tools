@@ -21,5 +21,6 @@ function getConfig(inputFilePath, outputPath) {
 
 module.exports = [
 	getConfig("./src/content/content.ts", "content/content.js"),
+	// getConfig("./src/background/background.ts", "background/background.js"),
 	getConfig("./src/inject/inject.ts", "inject/inject.js")
 ];

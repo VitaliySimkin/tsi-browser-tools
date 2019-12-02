@@ -18,6 +18,7 @@ module.exports = {
 		config.plugins.push(new CopyWebpackPlugin([
 			{ from: 'src/img/', to: 'img/' },
 			{ from: 'src/chrome.manifest.json', to: 'manifest.json' },
+			{ from: 'src/background/background.js', to: 'background/background.js' },
 			{ from: 'src/features/', to: 'features/', ignore: ["*.ts"] }
 		]));
 	}

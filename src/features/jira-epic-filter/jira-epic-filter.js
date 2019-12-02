@@ -22,6 +22,7 @@
 		},
 
 		overrideInitializeWorkMode() {
+			if (!Boolean(GH && GH.WorkController && GH.WorkController.initializeWorkMode)) return
 			let baseInitializeWorkMode = GH.WorkController.initializeWorkMode;
 			GH.WorkController.initializeWorkMode = function() {
 				let res = baseInitializeWorkMode.apply(GH.WorkController, arguments);
