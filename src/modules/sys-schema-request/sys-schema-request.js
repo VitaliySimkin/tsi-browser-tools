@@ -2,7 +2,7 @@
  * Выполняет запрос в SysSchema, чтобы получить Id,
  * UId и Name всех незамещающих схем в конфигурации.
  */
-function getData() {
+async function getData() {
 	/** Get request body */
 	function getRequestBody() {
 		return {
@@ -108,23 +108,17 @@ function getData() {
 
 	const body = getRequestBody();
 	const requestParams = getRequestParams(body);
-	const requestChecker = r => r.ok ? r.json() : Promise.resolve(null);
-	return Promise.all([
-		fetch('./DataService/json/SyncReply/SelectQuery', requestParams).then(requestChecker),
-		fetch('../DataService/json/SyncReply/SelectQuery', requestParams).then(requestChecker)
-	]).then(r => {
-		const result = r.find(Boolean);
-		return result && result.rows || [];
-	});
+	let currentHref = window.location.href.toString();
+	let confHref = currentHref.replace(/(?<=\/0\/).*/, "");
+	const serviceUrl = confHref + "DataService/json/SyncReply/SelectQuery";
+	let response = await(await fetch(serviceUrl, requestParams)).json();
+	return response && response.rows || [];
 }
 
 let _data = null;
 /** Get schema names */
-function getSchemaNames() {
-	if (!_data) {
-		_data = getData();
-	}
-	return _data;
+async function getSchemaNames() {
+	return _data = _data || await getData();
 }
 
 export default getSchemaNames;
