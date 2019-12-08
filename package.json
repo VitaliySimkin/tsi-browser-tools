@@ -8,9 +8,7 @@
 		"build:vue": "vue-cli-service build --mode development",
 		"build-dist:vue": "vue-cli-service build",
 		"build:extension": "webpack --progress --hide-modules",
-
 		"zip-dist": "node zip-dist.js ./dist/ ./dist.zip",
-
 		"build": "npm run build:vue & npm run build:extension",
 		"build-dist": "cls & npm run build-dist:vue & npm run build:extension & npm run zip-dist"
 	},
