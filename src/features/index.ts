@@ -5,6 +5,7 @@ import feature5 from './bpm-package-sort';
 import feature6 from './bpm-parent-name';
 import feature1 from './jira-epic-filter/';
 import feature7 from './jira-resizable/';
+import feature8 from './bpm-detail-info/';
 
 export default [
 	feature1,
@@ -14,4 +15,5 @@ export default [
 	feature5,
 	feature6,
 	feature7,
+	feature8,
 ];
