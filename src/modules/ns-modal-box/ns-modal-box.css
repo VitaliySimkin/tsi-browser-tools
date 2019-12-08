@@ -1,0 +1,65 @@
+.ns-modal-box-cnt {
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+	box-sizing: border-box;
+	position: fixed;
+	background-color: #fff;
+	z-index: 3000;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: fit-content;
+	height: fit-content;
+	min-height: 250px;
+	max-height: 90vh;
+	max-width: 80vw;
+	min-width: 200px;
+	opacity: 1;
+	border-top: 3px solid #64b8df;
+	OVERFLOW: auto;
+	border-radius: 3px;
+}
+
+span.ns-modal-box-title-caption {
+    font-size: 14px;
+    color: #444444;
+    font-family: monospace;
+}
+
+.ns-modal-box-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 7px 5px 5px 10px;
+    border-bottom: solid 1px #444;
+}
+
+.ns-modal-box-header-left {
+	user-select: none;
+	margin-left: 5px;
+}
+.ns-modal-box-btn {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    margin-right: 5px;
+    filter: invert(1) brightness(0.6);
+    cursor: pointer;
+}
+
+.ns-modal-box-btn:hover {
+	filter: invert(1) brightness(0.3);
+}
+.ns-modal-box-btn:active {
+	filter: invert(1) brightness(0.1);
+}
+
+
+span#ns-modal-box-attach-btn {
+    background-image: url(https://image.flaticon.com/icons/svg/149/149288.svg);
+}
+
+span#ns-modal-box-close-btn {
+    background-image: url(https://image.flaticon.com/icons/svg/149/149147.svg);
+}
