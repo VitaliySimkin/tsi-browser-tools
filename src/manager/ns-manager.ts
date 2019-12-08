@@ -6,7 +6,7 @@ import featuresList from '../features/index';
 class NSManagerClass {
 
 	/** Версія розширення */
-	public VERSION: string = '1.4.1';
+	public VERSION: string = '1.4.2';
 
 	/** Перелік фіч */
 	public features: NSFeature[] = featuresList;
