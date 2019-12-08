@@ -17,7 +17,7 @@
 			}
 			baseOnLoad.apply(this, arguments);
 		};
-		window.PackageTree.onRefreshPage(true);
+		window.PackageTree && window.PackageTree.onRefreshPage(true);
 	} catch (err) {
 		console.error(err);
 	}
