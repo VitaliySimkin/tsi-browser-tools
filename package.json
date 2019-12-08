@@ -1,38 +1,44 @@
 {
-  "name": "vue-cli",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve-popup": "vue-cli-service serve",
-    "build:vue": "vue-cli-service build",
-    "build:extension": "webpack --progress --hide-modules",
-    "build": "npm run build:vue & npm run build:extension",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "@types/chrome": "0.0.89",
-    "@types/chrome-apps": "0.0.9",
-    "vue": "^2.6.10",
-    "vue-router": "^3.1.3",
-    "vuex": "^3.0.1"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-typescript": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
-    "copy-webpack-plugin": "^5.0.4",
-    "less": "^3.0.4",
-    "less-loader": "^5.0.0",
-    "typescript": "^3.4.3",
-    "vue-template-compiler": "^2.6.10",
-    "webpack-cli": "^3.3.9"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+	"name": "vue-cli",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"lint": "vue-cli-service lint",
+		"serve-popup": "vue-cli-service serve",
+		"build:vue": "vue-cli-service build --mode development",
+		"build-dist:vue": "vue-cli-service build",
+		"build:extension": "webpack --progress --hide-modules",
+
+		"zip-dist": "node zip-dist.js ./dist/ ./dist.zip",
+
+		"build": "npm run build:vue & npm run build:extension",
+		"build-dist": "cls & npm run build-dist:vue & npm run build:extension & npm run zip-dist"
+	},
+	"dependencies": {
+		"@types/chrome": "0.0.89",
+		"@types/chrome-apps": "0.0.9",
+		"vue": "^2.6.10",
+		"vue-router": "^3.1.3",
+		"vuex": "^3.0.1"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-typescript": "^3.11.0",
+		"@vue/cli-service": "^3.11.0",
+		"copy-webpack-plugin": "^5.0.4",
+		"less": "^3.0.4",
+		"less-loader": "^5.0.0",
+		"typescript": "^3.4.3",
+		"vue-template-compiler": "^2.6.10",
+		"webpack-cli": "^3.3.9",
+		"zip-a-folder": "0.0.9"
+	},
+	"postcss": {
+		"plugins": {
+			"autoprefixer": {}
+		}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions"
+	]
 }
