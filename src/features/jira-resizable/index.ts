@@ -9,7 +9,7 @@ export default new NSFeature({
 			ru: `Позволяет изменять ширину таски. Можно лучше посмотреть информацию не открывая новую вкладку`,
 			en: `Allows you to change the width of the task. You can better see the information without opening a new tab`,
 		},
-		screen: 'jira-resizable.gif',
+		screen: 'jira-resizable.png',
 	},
 	title: {
 		ua: 'JIRA. Зміна ширини відкритої таски',
