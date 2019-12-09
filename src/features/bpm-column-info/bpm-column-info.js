@@ -1,4 +1,4 @@
-import NSModalBox from "../../modules/ns-modal-box/ns-modal-box.js";
+import NSModalBox from '../../modules/ns-modal-box/ns-modal-box.js';
 
 var NSBusinessRuleColumnInfo = {
 	getModelRules(model) {
@@ -34,7 +34,7 @@ var NSBusinessRuleColumnInfo = {
 	},
 	async getBusinessRuleModule() {
 		return new Promise((callback) => {
-			require(["BusinessRuleModule"], function(BusinessRuleModule) {callback(BusinessRuleModule);});
+			require(['BusinessRuleModule'], function(BusinessRuleModule) {callback(BusinessRuleModule);});
 		});
 	},
 	async getColumnBindRules(model, columnName) {
@@ -45,7 +45,7 @@ var NSBusinessRuleColumnInfo = {
 		return bindRules.map(rule => {
 			let compr = cond => this.getPropNameByValue(Terrasoft.ComparisonType, cond.comparisonType);
 			let getCondDesc = cond => `{${cond.leftExpression.attribute} ${compr(cond)} ${cond.rightExpression.value}}`;
-			let separaor = this.getPropNameByValue(Terrasoft.LogicalOperatorType, rule.logical) || "AND";
+			let separaor = this.getPropNameByValue(Terrasoft.LogicalOperatorType, rule.logical) || 'AND';
 			let value = rule.conditions.map(getCondDesc).join(` ${separaor} `);
 			let caption = this.getPropNameByValue(BusinessRuleModule.enums.Property, rule.property);
 			return {caption, value};
@@ -59,18 +59,27 @@ var NSBusinessRuleColumnInfo = {
 const ColumnInfoManager = {
 	/** propsConfig */
 	props: [
-		{name: "caption", caption: "caption"},
-		{name: "columnPath", caption: "columnPath"},
-		{name: "dataValueType", caption: "DataType", propOf: "DataValueType"},
-		{name: "referenceSchemaName", caption: "referenceSchema"},
-		{name: "type", caption: "Type", propOf: "ViewModelColumnType"},
-		{name: "uId", caption: "UID"},
-		{name: "name", caption: "pageName", isModelProp: true}
+		{name: 'caption', caption: 'caption'},
+		{name: 'columnPath', caption: 'columnPath'},
+		{name: 'dataValueType', caption: 'DataType', propOf: 'DataValueType'},
+		{name: 'referenceSchemaName', caption: 'referenceSchema'},
+		{name: 'type', caption: 'Type', propOf: 'ViewModelColumnType'},
+		{name: 'uId', caption: 'UID'},
+		{name: 'name', caption: 'pageName', isModelProp: true}
 	],
 
+	wait(time) {
+		return new Promise(resolve => setTimeout(resolve, time));
+	},
+
 	/** Initialize */
-	init() {
+	async init() {
 		let scope = this;
+		let waited = 0;
+		while (!Terrasoft.BaseEdit && waited < 10) {
+			await this.wait(1000);
+			waited++;
+		}
 		let initDomEvents = Terrasoft.BaseEdit.prototype.initDomEvents;
 		Terrasoft.BaseEdit.prototype.initDomEvents = function() {
 			scope.appendColumnInfoClickHandler.call(scope, this);
@@ -81,7 +90,7 @@ const ColumnInfoManager = {
 	/** Append column info click handler */
 	appendColumnInfoClickHandler(context) {
 		let wrapEl = context.getWrapEl()
-		wrapEl.on("click", function(event) {
+		wrapEl.on('click', function(event) {
 			this.onEditWrapElClick(context, event);
 		}, this);
 	},
@@ -101,14 +110,14 @@ const ColumnInfoManager = {
 
 	async displayColumnInfo({model, bindTo}) {
 		let items = this.getItems({model, bindTo});
-		let cnt = this.createEl("table.ns-column-info-table");
+		let cnt = this.createEl('table.ns-column-info-table');
 		items.forEach(item => this.renderItem(item, cnt), this);
 		let rules = await NSBusinessRuleColumnInfo.getColumnBindRules(model, bindTo);
 		rules.forEach(rule => this.renderItem(rule, cnt), this);
 		new NSModalBox({
 			content: cnt,
-			style: {width: "500px"},
-			caption: "Column info"
+			style: {width: '500px'},
+			caption: 'Column info'
 		});
 	},
 
@@ -117,12 +126,12 @@ const ColumnInfoManager = {
 		let _value = config.model && config.model.get(config.bindTo);
 		let value = (_value && _value.value) ? _value.value : _value;
 		items.push({
-			caption: "value",
+			caption: 'value',
 			value: value
 		});
-		if (typeof _value === "object") {
+		if (typeof _value === 'object') {
 			items.push({
-				caption: "displayValue",
+				caption: 'displayValue',
 				value: _value.displayValue
 			});
 		}
@@ -146,13 +155,13 @@ const ColumnInfoManager = {
 		return items;
 	},
 
-	createEl(tag, innerText = "", props = {}) {
-		let elTag = tag.split(".")[0];
-		let className = tag.split(".")[1];
+	createEl(tag, innerText = '', props = {}) {
+		let elTag = tag.split('.')[0];
+		let className = tag.split('.')[1];
 		let el = document.createElement(elTag);
 		if (className) el.className = className;
 
-		if (typeof innerText === "object") props = innerText;
+		if (typeof innerText === 'object') props = innerText;
 		else el.innerText = String(innerText);
 
 		for (let key in props) tr[key] = props[key];
@@ -160,18 +169,18 @@ const ColumnInfoManager = {
 	},
 
 	createCopyValueBtn(value) {
-		let copy =this.createEl("span.nsci-prop-copy");
-		copy.addEventListener("click", function() {
+		let copy =this.createEl('span.nsci-prop-copy');
+		copy.addEventListener('click', function() {
 			this.copyValue(value);
 		}.bind(this));
 		return copy;
 	},
 
 	renderItem(item, renderTo) {
-		let tr = this.createEl("tr.ns-column-info-prop-row");
-		tr.appendChild(this.createEl("th.nsci-prop-name", item.caption));
-		tr.appendChild(this.createEl("td.nsci-prop-value", item.value));
-		let copyTd = this.createEl("td");
+		let tr = this.createEl('tr.ns-column-info-prop-row');
+		tr.appendChild(this.createEl('th.nsci-prop-name', item.caption));
+		tr.appendChild(this.createEl('td.nsci-prop-value', item.value));
+		let copyTd = this.createEl('td');
 		copyTd.appendChild(this.createCopyValueBtn(item.value));
 		tr.appendChild(copyTd);
 		renderTo.appendChild(tr);
