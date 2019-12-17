@@ -124,18 +124,20 @@ const ColumnInfoManager = {
 	getItems(config) {
 		let items = [];
 		let _value = config.model && config.model.get(config.bindTo);
+		let column = config.model.columns[config.bindTo];
 		let value = (_value && _value.value) ? _value.value : _value;
 		items.push({
 			caption: 'value',
 			value: value
 		});
 		if (typeof _value === 'object') {
-			items.push({
-				caption: 'displayValue',
-				value: _value.displayValue
-			});
+			if (column.dataValueType !== Terrasoft.DataValueType.DATE_TIME) {
+				items.push({
+					caption: 'displayValue',
+					value: _value.displayValue
+				});
+			}
 		}
-		let column = config.model.columns[config.bindTo];
 		this.props.forEach(prop => {
 			let value = prop.isModelProp ? config.model[prop.name] : column[prop.name];
 			if (prop.propOf) {
