@@ -130,7 +130,7 @@ const ColumnInfoManager = {
 			caption: 'value',
 			value: value
 		});
-		if (typeof _value === 'object') {
+		if (typeof _value === 'object' && _value !== null) {
 			if (column.dataValueType !== Terrasoft.DataValueType.DATE_TIME) {
 				items.push({
 					caption: 'displayValue',
