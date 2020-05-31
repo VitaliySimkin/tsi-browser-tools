@@ -79,7 +79,7 @@ const DetailInfoManager = {
 		if (typeof innerText === "object") props = innerText;
 		else el.innerText = String(innerText);
 
-		for (let key in props) tr[key] = props[key];
+		for (let key in props) el[key] = props[key];
 		return el;
 	},
 
