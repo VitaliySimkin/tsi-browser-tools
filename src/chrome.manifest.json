@@ -22,7 +22,11 @@
 			"*://*.tscrm.com/*",
 			"*://jira/*",
 			"*://localhost/*",
-			"*://sales-web/*"
+			"*://sales-web/*",
+			"*://service-web/*",
+			"*://marketing-web/*",
+			"*://fiserv-web/*",
+			"*://tyrion-web/*"
 		],
 		"js": ["./content/content.js"]
 	}],
