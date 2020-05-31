@@ -21,3 +21,4 @@ yarn-error.log*
 *.sw?
 dist.zip
 package-lock.json
+v*.zip

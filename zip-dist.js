@@ -1,7 +1,8 @@
 const { zip } = require('zip-a-folder');
+const pjson = require("./package.json");
 
 const ZipManager = {
-	async zip(folderPath = './dist/', zipPath = './dist.zip') {
+	async zip(folderPath, zipPath) {
 		console.info(`Zip folder '${folderPath}' to '${zipPath}' started`);
 		try {
 			await zip(folderPath, zipPath);
@@ -12,5 +13,4 @@ const ZipManager = {
 	}
 }
 
-
-ZipManager.zip(process.argv[2], process.argv[3]);
+ZipManager.zip('./dist/', `./v${pjson.version}.zip`);
