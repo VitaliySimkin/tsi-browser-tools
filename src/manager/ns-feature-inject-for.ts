@@ -7,6 +7,7 @@ enum NSFeatureInjectFor {
 
 	/** Для jira */
 	Jira = 'Jira',
+
 }
 
 export default NSFeatureInjectFor;
